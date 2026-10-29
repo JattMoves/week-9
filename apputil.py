@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 
 class GroupEstimate:
+    """A class to estimate a target variable based on groupings of features."""
     def __init__(self, estimate="mean"):
         if estimate not in ("mean", "median"):
             raise ValueError("estimate must be 'mean' or 'median'")
@@ -10,7 +11,8 @@ class GroupEstimate:
         self.feature_names = None
         self.group_estimates = None
 
-    def fit(self, X, y):
+    def fit(self, X, y):  
+        """ Fits the model to the data by calculating group estimates based on the specified features."""
         if not isinstance(X, pd.DataFrame):
             raise TypeError("X must be a pandas DataFrame")
 
@@ -40,6 +42,7 @@ class GroupEstimate:
         return self
 
     def predict(self, X_):
+        """ Predicts the target variable based on the fitted group estimates."""
         if self.group_estimates is None:
             raise RuntimeError("Call fit before predict")
 
