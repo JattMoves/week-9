@@ -1,5 +1,5 @@
 import pandas as pd
-
+import numpy as np
 
 class GroupEstimate:
     def __init__(self, estimate="mean"):
@@ -60,4 +60,4 @@ class GroupEstimate:
         if missing_count:
             print(f"Missing groups: {missing_count}")
 
-        return predictions
+        return np.array(predictions)
